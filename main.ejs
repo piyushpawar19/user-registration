@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>
+        <%= typeof title != 'undefined'? title:'user-registration' %>
+    </title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.2/font/bootstrap-icons.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Serif:wght@100&family=Montserrat:wght@300&family=Open+Sans&family=Rubik:wght@300;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/css/style.css">
+
+</head>
+
+
+<body>
+    <div class="container-xxl px-md-5 bg-white shadow-lg">
+        <header class="d-flex flex-wrap align-items-center justify-content-center justify-content-md-between py-3 mb-4 border-bottom">
+            <a href="/" class="d-flex align-items-center col-md-3 mb-2 mb-md-0 text-dark text-decoration-none">
+              <img src="/uploads/logo.jpg" width="229" height="68" alt="user-registration - Made with Node.js">
+            </a>
+      
+            <ul class="nav col-12 col-md-auto mb-2 justify-content-center mb-md-0">
+              <li><a href="/api/users" class="nav-link px-2 link-secondary">Home</a></li>
+              <li><a href="/about" class="nav-link px-2 link-secondary">About</a></li>
+              <li><a href="/api/users/register" class="nav-link px-2 link-secondary">Register</a></li>
+              <li><a href="/contact" class="nav-link px-2 link-secondary">Contact</a></li>
+            </ul>
+      
+            <div class="col-md-3 text-end">
+              <form method="POST" action="/search">
+                <input type="search" name="searchTerm" class="form-control" placeholder="SearchUser..." aria-label="Search">
+              </form>
+            </div>
+          </header>
+          <h1>Registered Users</h1>
+          <main>
+            <% user.forEach((u)=>{ %>
+                 
+            <div class="card mb-3" style="max-width: 540px;">
+            <div class="row g-0">
+              <div class="col-md-4">
+                <img src="/uploads/logo.jpg" class="img-fluid rounded-start" alt="...">
+              </div>
+              <div class="col-md-8">
+                <div class="card-body">
+                  <h3 class="card-title"><%= u.name %> </h3>
+                  <h5><%= u.email %> </h5>
+                  <p class="card-text"><%= u.about %></p>
+                  
+                </div>
+              </div>
+            </div>
+          </div>
+          <% }) %>
+
+          <h1>Welcome to User Registration</h1>
+      <form
+        action="/api/users/"
+        method="post"
+        enctype="multipart/form-data"
+      >
+        <label for="name">Name:</label><br />
+        <input type="text" id="name" name="name" required /><br />
+        <label for="email">Email:</label><br />
+        <input type="email" id="email" name="email" required /><br />
+        <label for="password">Password:</label><br />
+        <input type="password" id="password" name="password" required /><br />
+        <label for="about">About yourself</label>
+
+        <textarea id="about" name="about" rows="4" cols="50">
+        </textarea>
+        
+        <label for="profilePicture">Profile Picture:</label><br />
+        <input
+          type="file"
+          id="profilePicture"
+          name="profilePicture"
+          accept="image/*"
+        /><br />
+        <button type="submit">Register</button>
+      </form>
+        </main>
+        
+
+        <footer class="py-5">
+            <p>Build by Piyush Pawar - Technology used Node.js, Express.js, MongoDb, JavaScript, EJS and more</p>
+        </footer>
+
+    </div>
+
+    
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
+<!-- <script src="/js/script.js"></script> -->
+</body>
+</html>
